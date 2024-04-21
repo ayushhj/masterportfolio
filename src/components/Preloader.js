@@ -4,10 +4,10 @@ gsap.registerPlugin(CSSPlugin);
 
 function Preloader() {
 
-// const[showLoader , setShowLoader] = useState(true)
-// setTimeout(() => {
-//   setShowLoader(false)
-// }, 6000);
+const[showLoader , setShowLoader] = useState(true)
+setTimeout(() => {
+  setShowLoader(false)
+}, 6000);
 
   const [counter, setCounter] = useState(0);
 
@@ -40,18 +40,14 @@ function Preloader() {
         ease: Expo.easeInOut,
         duration: 0.7,
         delay: 0.5,
-      }) .to(".content", { width: "100%", ease: Expo.easeInOut, duration: 0.7 })
+      }).to(".content", { width: "100%", ease: Expo.easeInOut, duration: 0.7 })
       .to(".title-lines", { display: "block", duration: 0.1 })
       .to(".title-lines", {
-        opacity: 1,
-        stagger: 0.15,
-        ease: Expo.easeInOut,
-        duration: 0.6,
       });
   
   };
 
-  return (
+  return showLoader ?  (
     <div className="appcontainer" >
       <div className="loading">
         <div className="follow"></div>
@@ -66,13 +62,10 @@ function Preloader() {
       </div>
 
       <div className="content">
-      <p className="title-lines" id="title" >🚧 Under Development, I'am Beautifying This Space! 🚧</p>
-        <p className="title-lines" id="title" >Brace Yourself! A New Look is Coming Soon!🤩</p>
-        <p className="title-lines" id="title">Check Back Soon!👀</p>
       </div>
 
     </div>
-  ) ;
+  ) : null;
 }
 
 export default Preloader;
